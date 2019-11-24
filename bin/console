@@ -1,0 +1,24 @@
+#!/usr/bin/env php
+
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use Symfony\Component\Console\Application;
+use App\Command\DownloadWallpapersCommand;
+use App\Container;
+
+try {
+    $containerBuilder = new \DI\ContainerBuilder();
+    $containerBuilder->addDefinitions(__DIR__ . '/../config/dependencies.php');
+    $container = $containerBuilder->build();
+//    Container::register($containerBuilder->build());
+
+    $command = $container->get(DownloadWallpapersCommand::class);
+
+    $app = new Application();
+    $app->add($command);
+    $app->run();
+} catch (Throwable $e) {
+    echo $e->getMessage();
+}
