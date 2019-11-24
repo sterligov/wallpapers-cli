@@ -83,12 +83,8 @@ class DownloadWallpapersCommand extends Command
 
         $output->write('Download start. This may take some time' . PHP_EOL);
 
-        try {
-            $downloader = $this->wallpaperFactory->createDownloader($options);
-            $saved = $downloader->download($options['folder'], $options['count']);
-            $output->write("$saved wallpapers have been downloaded" . PHP_EOL);
-        } catch (\Throwable $e) {
-            $output->write($e->getMessage() . PHP_EOL);
-        }
+        $downloader = $this->wallpaperFactory->createDownloader($options);
+        $saved = $downloader->download($options['folder'], (int)$options['count']);
+        $output->write("$saved wallpapers have been downloaded" . PHP_EOL);
     }
 }
