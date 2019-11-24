@@ -10,4 +10,4 @@ You also specify the following flags
 by default it's current directory
 - -m month(December, January, etc.), by default it's current month
 - -y year(2018, 2019, etc.), by default it's current year
-- -n maximum wallpapers number, by default 0 - with no restrictions
+- -c maximum wallpapers number, by default 0 - with no restrictions
