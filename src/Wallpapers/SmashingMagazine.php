@@ -151,7 +151,8 @@ class SmashingMagazine implements WallpapersDownloaderInterface
         $urls = [];
         foreach ($nodes as $node) {
             if (preg_match('/\d+x\d+/',$node->nodeValue)) {
-                $urls[$node->getAttribute('title')] = $node->getAttribute('href');
+                $imageName = array_pop(explode('/', $node->getAttribute('href')));
+                $urls[$imageName] = $node->getAttribute('href');
             }
         }
 
